@@ -1,16 +1,18 @@
 {
   "name": "mvp-web-app",
   "version": "1.0.0",
-  "description": "MVP Web App",
   "type": "module",
-  "main": "index.js",
+  "description": "MVP Web App",
+  "main": "server.js",
   "scripts": {
     "start": "node back/server.js",
     "server": "nodemon back/server.js",
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Owen",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -22,6 +24,7 @@
     "mongoose": "^8.15.2"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "nodemon": "^3.1.10"
   }
 }
