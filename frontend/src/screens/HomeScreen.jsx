@@ -1,14 +1,6 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import Hero from '../components/Hero';
 
 const HomeScreen = () => {
-  return (
-    <Container className="py-5">
-      <Row className="justify-content-center">
-        <Col md={8} className="text-center">
-        </Col>
-      </Row>
-    </Container>
-  );
+  return <Hero />;
 };
-
 export default HomeScreen;

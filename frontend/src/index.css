@@ -40,3 +40,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.py-5 {
+    background-color: #00693E;
+}
