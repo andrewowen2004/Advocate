@@ -1,28 +1,39 @@
-// Entry to backend/api
-// not using common js instead using es modules
-
+import path from 'path';
 import express from 'express';
-import dotenv, { config } from 'dotenv';
-import userRoutes from './routes/user-routes.js';
-import { notFound,errorHandler } from './middleware/error-middleware.js';
-import connectDB from './config/db.js';
- 
+import dotenv from 'dotenv';
 dotenv.config();
+import connectDB from './config/db.js';
+import cookieParser from 'cookie-parser';
+import { notFound, errorHandler } from './middleware/error-middleware.js';
+import userRoutes from './routes/user-routes.js';
+
+const port = process.env.PORT || 8080;
 
 connectDB();
 
 const app = express();
 
-const port = process.env.PORT || 8080;// cant use port 5000 like video because of ControlCe
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
-app.get('/', (req,res) => res.send('Server is ready'));
+if (process.env.NODE_ENV === 'production') {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-app.use(notFound); 
-app.use(errorHandler); 
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
 
-app.listen(port,() => console.log(`Server started on port: ${port}`));
+app.use(notFound);
+app.use(errorHandler);
 
-
-// test push 6/14 
+app.listen(port, () => console.log(`Server started on port ${port}`));
