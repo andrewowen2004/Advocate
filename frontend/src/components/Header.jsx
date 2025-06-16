@@ -31,7 +31,7 @@ const Header = () => {
       <Navbar expand='lg' collapseOnSelect className='custom-navbar'>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Advocate</Navbar.Brand>
+            <Navbar.Brand>MERN Auth</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
