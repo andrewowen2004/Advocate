@@ -28,13 +28,18 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <Navbar expand='lg' collapseOnSelect className='custom-navbar'>
+      <Navbar expand='lg' collapseOnSelect className='custom-navbar'> {/* This is a JSX comment */}
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>MERN Auth</Navbar.Brand>
+            <Navbar.Brand>advocate</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Toggle aria-controls='basic-navbar-nav' /> {/* renders menu button for smaller screens*/}
           <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='me-auto'> 
+              <LinkContainer to='/register'>
+                <Nav.Link>about</Nav.Link>
+              </LinkContainer>
+            </Nav>
             <Nav className='ms-auto'>
               {userInfo ? (
                 <>
@@ -51,12 +56,12 @@ const Header = () => {
                 <>
                   <LinkContainer to='/login'>
                     <Nav.Link>
-                      <FaSignInAlt /> Sign In
+                      sign in
                     </Nav.Link>
                   </LinkContainer>
                   <LinkContainer to='/register'>
                     <Nav.Link>
-                      <FaSignOutAlt /> Sign Up
+                      sign up
                     </Nav.Link>
                   </LinkContainer>
                 </>

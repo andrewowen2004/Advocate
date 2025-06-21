@@ -1,0 +1,9 @@
+.custom-navbar {
+  position: relative;
+}
+
+.custom-navbar .navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
